@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 
 interface Cheque {
@@ -14,6 +15,7 @@ interface Cheque {
 }
 
 export default function ChequeList() {
+  const router = useRouter()
   const [cheques, setCheques] = useState<Cheque[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -41,6 +43,30 @@ export default function ChequeList() {
 
     fetchCheques()
   }, [])
+
+  const handleDelete = async (id: number) => {
+    const confirmed = window.confirm('Are you sure you want to delete this cheque?')
+    
+    if (!confirmed) return
+
+    try {
+      const { error } = await supabase.from('cheques').delete().eq('id', id)
+
+      if (error) {
+        throw error
+      }
+
+      // Optimistically remove from state
+      setCheques((prev) => prev.filter((cheque) => cheque.id !== id))
+    } catch (err) {
+      console.error('Error deleting cheque:', err)
+      alert('Failed to delete cheque. Please try again.')
+    }
+  }
+
+  const handleEdit = (id: number) => {
+    router.push(`/cheques/${id}/edit`)
+  }
 
   if (loading) {
     return (
@@ -89,6 +115,9 @@ export default function ChequeList() {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
               Status
             </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
@@ -123,6 +152,22 @@ export default function ChequeList() {
                 >
                   {cheque.status}
                 </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <div className="flex gap-2 justify-center">
+                  <button
+                    onClick={() => handleEdit(cheque.id)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(cheque.id)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition-colors"
+                  >
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
