@@ -125,7 +125,7 @@ export default function ChequesPage() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-b w-[180px]">
                     Actions
                   </th>
                 </tr>
@@ -163,17 +163,17 @@ export default function ChequesPage() {
                         {cheque.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <div className="flex gap-2 justify-center">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
+                      <div className="flex items-center justify-center gap-2">
                         <button
                           onClick={() => handleEdit(cheque.id)}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+                          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:brightness-110 transition-all duration-200"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(cheque.id)}
-                          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors"
+                          className="bg-red-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:brightness-110 transition-all duration-200"
                         >
                           Delete
                         </button>
