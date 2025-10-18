@@ -7,7 +7,7 @@ export default function Navbar() {
         {/* Left: App Title */}
         <div>
           <Link href="/" className="text-xl font-bold text-gray-100 hover:text-blue-400 transition-colors">
-            Insyd Cheque Manager
+            Insyd Payment Manager
           </Link>
         </div>
 
@@ -15,21 +15,21 @@ export default function Navbar() {
         <div className="flex gap-6">
           <Link 
             href="/" 
-            className="text-gray-100 hover:text-blue-400 hover:underline transition-colors"
+            className="text-gray-100 hover:text-blue-400 transition-colors"
           >
             Home
           </Link>
           <Link 
-            href="/cheques/new" 
-            className="text-gray-100 hover:text-blue-400 hover:underline transition-colors"
+            href="/cheques" 
+            className="text-gray-100 hover:text-blue-400 transition-colors"
           >
-            Add Cheque
+            Cheques
           </Link>
           <Link 
-            href="/cheques" 
-            className="text-gray-100 hover:text-blue-400 hover:underline transition-colors"
+            href="/cash" 
+            className="text-gray-100 hover:text-blue-400 transition-colors"
           >
-            View Cheques
+            Cash
           </Link>
         </div>
       </div>

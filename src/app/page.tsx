@@ -6,28 +6,28 @@ export default function Home() {
   const router = useRouter()
 
   return (
-    <main className="flex items-center justify-center min-h-screen p-8 bg-gradient-to-br from-gray-900 to-gray-800">
+    <main className="flex items-center justify-center min-h-screen p-8 bg-gradient-to-br from-gray-900 to-blue-950">
       <div className="bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-12 max-w-2xl w-full text-center">
-        <h1 className="text-3xl font-bold mb-4 text-gray-100">
-          Welcome to Your Cheque Manager
+        <h1 className="text-4xl font-bold mb-4 text-gray-100">
+          Welcome to Your Payment Manager
         </h1>
-        <p className="text-gray-400 mb-10">
-          Easily manage, track, and record business payments.
+        <p className="text-gray-400 mb-10 text-lg">
+          Easily manage, track, and record all your cheque and cash transactions.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <button
-            onClick={() => router.push('/cheques/new')}
-            className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 hover:shadow-lg hover:scale-105 transition-transform duration-200"
+            onClick={() => router.push('/cheques')}
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Add New Cheque
+            Manage Cheques
           </button>
           
           <button
-            onClick={() => router.push('/cheques')}
-            className="px-8 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-500 hover:shadow-lg hover:scale-105 transition-transform duration-200"
+            onClick={() => router.push('/cash')}
+            className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
           >
-            View All Cheques
+            Manage Cash
           </button>
         </div>
       </div>
