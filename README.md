@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧾 Insyd Payment Manager (POC)
 
-## Getting Started
+A unified cheque and cash payment management system built using **Next.js**, **Supabase**, and an **Express proxy backend**.  
+The goal of this Proof of Concept (POC) is to simplify cheque and cash transaction tracking for businesses.
 
-First, run the development server:
+---
 
-```bash
+## 🚀 Live Links
+
+- **🌐 Live App:** [https://insyd-poc-sigma.vercel.app](https://insyd-poc-sigma.vercel.app)
+- **📘 Solution Document (Notion):** [Insyd Payment Manager POC – Solution Overview](https://www.notion.so/Insyd-Payment-Manager-POC-29060e92bc1b80f49a50d7daf9aa805c)
+- **💻 GitHub Repo:** [https://github.com/shrikarthik007/insyd-poc](https://github.com/shrikarthik007/insyd-poc)
+
+---
+
+## 🧠 Overview
+
+The **Insyd Payment Manager POC** provides a web-based interface for managing **cheque** and **cash** transactions.  
+It allows users to record, update, and monitor all payment activities in a single dashboard.
+
+This project demonstrates:
+- Integration of **Next.js frontend**
+- **Express.js** backend proxy for future scalability
+- Use of **Supabase** for database, authentication (future), and real-time data
+- Deployment pipeline via **Vercel**
+
+---
+
+## 🏗️ Architecture Diagram (Text View)
+
+┌──────────────────────────────┐
+│ Frontend (UI)                │
+│ Next.js + TailwindCSS        │
+│ Pages:                       │
+│ - /                          │
+│ - /cheques (list/add/edit)   │
+│ - /cash (list/add/edit)      │
+└──────────────┬───────────────┘
+               │
+▼
+┌──────────────────────────────┐
+│ Express.js Proxy API         │
+│ Handles CRUD requests & API  │
+│ routes requests to Supabase  │
+└──────────────┬───────────────┘
+               │
+▼
+┌──────────────────────────────┐
+│ Supabase (PostgreSQL)        │
+│ Tables:                      │
+│ - cheques                    │
+│ - cash_payments              │
+│ Features:                    │
+│ - Row Level Security (RLS)   │
+│ - Realtime APIs              │
+└──────────────────────────────┘
+
+yaml
+Copy code
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology | Purpose |
+|-------|-------------|----------|
+| **Frontend** | Next.js 15 + React + TailwindCSS | UI & Routing |
+| **Backend** | Express.js | API Proxy / Future scalability |
+| **Database** | Supabase (PostgreSQL) | Persistent storage |
+| **Hosting** | Vercel | Deployment and CI/CD |
+| **Auth (Future)** | Supabase Auth | User-level security |
+
+---
+
+## 🧩 Core Features
+
+✅ **Cheque Management**
+- Add, edit, and delete cheque details  
+- Track status (Pending, Cleared, Bounced)
+
+✅ **Cash Management**
+- Record and manage cash payments  
+- Track purpose, payer, and amount  
+
+✅ **Unified Dashboard**
+- View both cheque and cash transactions  
+
+✅ **Modern UI**
+- Responsive, dark theme  
+- Styled using TailwindCSS  
+
+✅ **Express Proxy Backend**
+- Abstracts API calls for modular scalability  
+
+✅ **Supabase Integration**
+- Database + RLS policies for secure CRUD  
+
+---
+
+## 🧠 How to Run Locally
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/shrikarthik007/insyd-poc.git
+   cd insyd-poc
+Install dependencies
+
+bash
+Copy code
+npm install
+Set up environment variables
+Create a .env.local file in the root folder with:
+
+ini
+Copy code
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+Run the development server
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit http://localhost:3000 🚀
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧩 Future Enhancements
+To make the system production-ready and enterprise-scalable, the following enhancements are planned:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Enhancement	Description
+🔐 Authentication	Supabase Auth for user-level data segregation
+📊 Analytics Dashboard	Graphs for cheque vs cash trends
+🔔 Notifications	Alerts for bounced/pending cheques
+📤 Export Tools	CSV/PDF summary reports
+🔎 Search & Filters	Improve data discoverability
+📄 Pagination	Better performance on large datasets
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🧾 Summary
+The Insyd Payment Manager POC delivers a unified solution for cheque and cash management,
+addressing multiple business pain points with a single, scalable, and efficient platform.
 
-## Learn More
+It fulfills all assignment goals:
+✅ Next.js frontend
+✅ Express.js backend proxy
+✅ Supabase integration
+✅ Deployed live on Vercel
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👨‍💻 Author
+Shrikarthik Holebagil
